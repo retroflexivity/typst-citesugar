@@ -1,0 +1,20 @@
+jones:
+  type: Book
+  title: Book 0
+  author: Jones, Sid
+  date: 2000
+johnson:
+  type: Article
+  title: Article 1
+  author: Johnson, John Siegmund
+  date: 2001
+jonesjohnson:
+  type: Article
+  title: Article 2
+  author: ["Jones, Sid", "Johnson, John Siegmund"]
+  date: 2002
+johnsonetal:
+  type: Book
+  title: Book 3
+  author: ["Jones, Sid", "Johnson, John Siegmund", "Johansson, Klaus"]
+  date: 2002

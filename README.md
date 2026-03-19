@@ -1,6 +1,6 @@
 # More ways to cite, and with shorter syntax
 
-This tiny Typst package gives a shorter way to cite bibliography entries in various forms. It also provides some forms Typst doesn't currently support.
+This tiny Typst package gives a shorter way to cite bibliography entries in various forms. It also provides some forms Typst doesn't currently support. It is based on [Ntlgrr](https://github.com/Ntgllr)'s [gist](https://gist.github.com/Ntgllr/a194eb327e4db6c480c84de9be106125).
 
 ## How to use it
 

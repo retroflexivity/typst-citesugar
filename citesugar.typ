@@ -1,9 +1,3 @@
-#let show-supplement = suppl => {
-  if suppl != none {
-    [, #suppl]
-  }
-}
-
 #let cite-bare(key, supplement: none, style: auto) = {
   show regex("[\(\)\[\]]"): none
   cite(key, supplement: supplement, style: style)

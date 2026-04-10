@@ -4,15 +4,15 @@
 }
 
 #let cite-author-genitive(key, supplement: none, style: auto) = {
-  show regex(".+$"): it => it + "'"
-  show regex("[^s]'$"): it => it + "s"
+  show regex(".+$"): it => it + "’"
+  show regex("[^s]’$"): it => it + "s"
   cite(key, form: "author", supplement: supplement)
 }
 
 #let cite-prose-genitive(key, supplement: none, style: auto) = {
   show regex(".\s[\[\(]"): it => {
-    show regex("[^\s\[\(]"): it => it + "'"
-    show regex("[^s]'"): it => it + "s"
+    show regex("[^\s\[\(]"): it => it + "’"
+    show regex("[^s]’"): it => it + "s"
     it
   }
   cite(key, form: "prose", supplement: supplement)

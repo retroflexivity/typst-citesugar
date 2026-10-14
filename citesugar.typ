@@ -1,20 +1,22 @@
+#let lang-genitive(author) = context {
+  import "locales.typ": genitives
+  genitives.at(text.lang, default: genitives.en)(author)
+}
+
 #let cite-bare(key, supplement: none, style: auto) = {
   show regex("[\(\)\[\]]"): none
   cite(key, supplement: supplement, style: style)
 }
 
 #let cite-author-genitive(key, supplement: none, style: auto) = {
-  show regex(".+$"): it => it + "’"
-  show regex("[^s]’$"): it => it + "s"
-  cite(key, form: "author", supplement: supplement)
+  lang-genitive(cite(key, form: "author", supplement: supplement))
 }
 
 #let cite-prose-genitive(key, supplement: none, style: auto) = {
-  show regex(".\s[\[\(]"): it => {
-    show regex("[^\s\[\(]"): it => it + "’"
-    show regex("[^s]’"): it => it + "s"
-    it
-  }
+    show regex("^[^\[\(]+"): it => {
+      show regex("([^\s]*\s)*[^\s]+"): lang-genitive
+      it
+    }
   cite(key, form: "prose", supplement: supplement)
 }
 

@@ -1,5 +1,5 @@
 #let lang-genitive(author) = context {
-  import "locales.typ": genitives
+  import "genitive.typ": genitives
   genitives.at(text.lang, default: genitives.en)(author)
 }
 

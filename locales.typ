@@ -1,3 +1,19 @@
+/// The genitive form used in most major Germanic languages.
+/// Normally, adds an s to the last word.
+/// If the name ends with an s/z/x/ß, adds an apostrophe or
+/// nothing (if `apostrophe: false`).
+/// "Et al." citations remain unmarked.
+///
+/// A rather cursed algorithm that adds a symbol
+/// to mark the end, then hides the symbol.
+#let average-germanic-genitive(s, apostrophe: true) = {
+    show "@": ""
+    show regex(".*[szxß]@"): it => it + "’"
+    show regex(".*?[^.szxß’]@"): it => it + "s"
+    show regex(" et al.@"): it => "@" + it
+    s + "@"
+}
+
 /// A dictionary of form `(lang: func)`,
 /// where `func :: content -> content`
 /// creates a genitive form from an author's name.
@@ -7,10 +23,10 @@
     show regex("[^s]’"): it => it + "s"
     c
   },
-  de: c => {
-    show "@": ""
-    show regex(".*[sz]@"): it => it + "’"
-    show regex(".*[^.sz’]@"): it => it + "s"
-    c + "@"
-  },
+  de: average-germanic-genitive,
+  nl: average-germanic-genitive,
+  sv: average-germanic-genitive.with(apostrophe: false),
+  no: average-germanic-genitive,
+  da: average-germanic-genitive,
+  fo: average-germanic-genitive,
 )

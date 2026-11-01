@@ -5,6 +5,6 @@ entrypoint = "citesugar.typ"
 authors = ["Arkady Shaldov"]
 license = "MIT"
 description = "More ways to cite, and with shorter syntax."
-repository = "https://github.com/retroflexivity/typst-citesugar"
+repository = "https://sr.ht/~retroflexivity/citesugar/"
 categories = ["model"]
 keywords = ["cite", "citations", "bibliography"]

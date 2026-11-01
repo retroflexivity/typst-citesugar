@@ -15,6 +15,13 @@
 /// Cite with the author name in genitive (possessive).
 /// Sensitive to current `text.lang`. 
 ///
+/// `genitives` can be passed to define genitive forms for your own languages.
+/// The form is determined in the order:
+/// 1. `genitives.at(text.lang)`
+/// 2. default for `text.lang`
+/// 3. `genitives.at("en")`
+/// 4. default for `"en"`
+///
 /// See standard `cite` for arguments.
 /// Supported forms are "prose" and "author".
 ///
@@ -23,19 +30,24 @@
 /// - `cite-genitive(<kripke1980>, form: "author")` -> Kripke's
 /// - `set text.lang("de"); cite-genitive(<kripke1980>)` -> Kripkes (1980)
 /// Make names ending with "s" have "’s" added.
-/// - `cite-genitive(<lewis1986>, mapping: (en: it => it + [’s]))` -> Lewis's (1986)
+/// - `cite-genitive(<lewis1986>, genitives: (en: it => it + [’s]))` -> Lewis's (1986)
 ///
-/// - mapping (dictionary): Override the lang -> genitive-function mapping.
+/// - genitives (dictionary): Custom languages in addition to or overriding the default ones.
+///   Values ar `content -> content` functions from author's name to posessive form.
 ///   See `genitive.genitives` for more info.
 #let cite-genitive(
   key,
   supplement: none,
   style: auto,
   form: "prose",
-  mapping: genitive.genitives
+  genitives: (:)
 ) = {
+    let genitives = genitive.genitives + genitives
+    
     show regex("^[^\[\(]+"): it => {
-      show regex("([^\s]*\s)*[^\s]+"): mapping.at(text.lang, default: mapping.en)
+      show regex("([^\s]*\s)*[^\s]+"): genitives.at(text.lang,
+          default: genitives.at("en")
+      )
       it
     }
   cite(key, form: form, supplement: supplement)

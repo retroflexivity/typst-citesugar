@@ -10,7 +10,6 @@
     show "@": ""
     show regex(".*[szxß]@"): it => it + "’"
     show regex(".*?[^.szxß’]@"): it => it + "s"
-    show regex(" et al.@"): it => "@" + it
     s + "@"
 }
 

@@ -19,7 +19,12 @@ Like prose or author, but with a possessive marker added to the name.
 - prose genitive (`cite-prose-genitive`): like prose, but with _’s_ after the author. Automatically detects final _s_ to remove the _s_ after the apostrophe.
 - author genitive (`cite-author-genitive`): like prose genitive, but for author.
 
-**A word of caution.** This is a small package that aims to be universal enough but does not guarantee everything will work with all the 10000000 citation styles and languages. If you have an idea on how to make it work better or have other useful forms in mind, please contribute!
+The genitive is language-sensitive --- the form depends on the current `text.lang`. Languages currently supported are:
+- English
+- German, Norwegian, Danish, Dutch, Faroese
+- Swedish
+
+You can add your own languages or override the provided ones by passing `genitives` to the functions.
 
 ## Custom syntax
 
@@ -56,8 +61,7 @@ You can add your own forms or override the provided ones by passing a dictionary
       x: (key, suppl) => some-custom-thing(key, suppl),
       b: (key, suppl) => cite(key, form: "normal", supplement: suppl), // Override `b`s to be normal citations
       ps: (key, suppl) => cite-genitive(key, supplement: suppl,
-        mapping: genitive.genitives + (en: it => it + [’s])
-      ) // Make prose-genitive always show as "’s", regardless of the final letter
+        genitives: (en: it => it + [’s])) // Make prose-genitive always show as "’s", regardless of the final letter
     )
   )
 ```
@@ -88,12 +92,18 @@ with the functions being
     supplement: none,
     style: auto,
     form: "prose",
-    mapping: genitive.genitives
+    genitives: (:)
   ) = {
+      let genitives = genitive.genitives + genitives
+    
       show regex("^[^\[\(]+"): it => {
-        show regex("([^\s]*\s)*[^\s]+"): mapping.at(text.lang, default: mapping.en)
+        show regex("([^\s]*\s)*[^\s]+"): genitives.at(text.lang,
+            default: genitives.at("en")
+        )
         it
       }
     cite(key, form: form, supplement: supplement)
   }
 ```
+
+**A word of caution.** This is a small package that aims to be universal enough but does not guarantee everything will work with all the 10000000 citation styles and languages. If you have an idea on how to make it work better or have other useful forms in mind, please contribute!

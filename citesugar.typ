@@ -1,27 +1,20 @@
 #import "genitive.typ" as genitive
 
-/// Form a genitive from an author name
-/// depending on the current `text.locale`.
-///
-/// -> content
-#let lang-genitive(
-  /// -> content
-  author,
-  /// Override the lang -> genitive-function mapping.
-  /// See `genitive.genitives` for more info.
-  mapping: genitive.genitives
-) = context {
-  mapping.at(text.lang, default: genitive.genitives.en)(author)
-}
 
 #let cite-bare(key, supplement: none, style: auto) = {
   show regex("[\(\)\[\]]"): none
   cite(key, supplement: supplement, style: style)
 }
 
-#let cite-genitive(key, supplement: none, style: auto, form: "prose") = {
+#let cite-genitive(
+  key,
+  supplement: none,
+  style: auto,
+  form: "prose",
+  mapping: genitive.genitives
+) = {
     show regex("^[^\[\(]+"): it => {
-      show regex("([^\s]*\s)*[^\s]+"): lang-genitive
+      show regex("([^\s]*\s)*[^\s]+"): mapping.at(text.lang, default: mapping.en)
       it
     }
   cite(key, form: form, supplement: supplement)

@@ -1,6 +1,6 @@
 image: alpine/latest
 secrets:
-  - 2ffb27f0-ead0-47c5-9747-4772d163cf4f
+  - 0aecbc91-bcf1-4e0f-8d90-79abd44ad80a
 tasks:
   - mirror: |
       cd typst-citesugar

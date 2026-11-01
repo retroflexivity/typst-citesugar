@@ -6,6 +6,14 @@ Contrary to the tradition, this package does two things.
   - bare citations without brackets (like Biblatex's `\cite`).
 2. It implements a simpler syntax for citations in different forms. This is based on [Ntlgrr](https://github.com/Ntgllr)'s [gist](https://gist.github.com/Ntgllr/a194eb327e4db6c480c84de9be106125).
 
+
+<!-- exclude -->
+Citesugar is developed on [sourcehut](https://sr.ht/~retroflexivity/citesugar/) with a [Github fork](https://github.com/retroflexivity/typst-citesugar).
+
+See it on [Typst Universe](https://typst.app/universe/package/citesugar).
+
+<!-- include -->
+
 ## Additional forms
 
 The package provides two and a half custom forms of citation.

@@ -1,17 +1,17 @@
 # More ways to cite in Typst, and with shorter syntax
 
 Contrary to the tradition, this package does two things.
-1. Provide some citation forms, primary intended for author-year styles, that Typst doesn't support. These are
+1. It provides some citation forms, primary intended for author-year styles, that Typst doesn't support. These are
   - posessive (genitive) citations, sensitive to the document language and the name's orthography;
-  - bare citations without brackets (like Biblatex' `\cite`).
-2. Implement a simpler syntax for citations in different forms. This is based on [Ntlgrr](https://github.com/Ntgllr)'s [gist](https://gist.github.com/Ntgllr/a194eb327e4db6c480c84de9be106125).
+  - bare citations without brackets (like Biblatex's `\cite`).
+2. It implements a simpler syntax for citations in different forms. This is based on [Ntlgrr](https://github.com/Ntgllr)'s [gist](https://gist.github.com/Ntgllr/a194eb327e4db6c480c84de9be106125).
 
 ## Additional forms
 
 The package provides two and a half custom forms of citation.
 
 ### Bare (`cite-bare`)
-Like normal, but without the brackets.
+Like normal, but with no brackets.
 
 ### Genitive (`cite-genitive`)
 Like prose or author, but with a possessive marker added to the name.
@@ -36,7 +36,7 @@ The syntax is `@label[form:supplement]`. The list of default forms is as follows
   @kripke      // (Kripke 1980)
   @kripke[p:]  // Kripke (1980)
   @kripke[a:]  // Kripke
-  @kripke[y:]  // 1982
+  @kripke[y:]  // 1980
   @kripke[b:]  // Kripke 1980
   @kripke[ps:] // Kripke's (1980)
   @kripke[as:] // Kripke's

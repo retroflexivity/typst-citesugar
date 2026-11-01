@@ -1,6 +1,17 @@
-#let lang-genitive(author) = context {
-  import "genitive.typ": genitives
-  genitives.at(text.lang, default: genitives.en)(author)
+#import "genitive.typ" as genitive
+
+/// Form a genitive from an author name
+/// depending on the current `text.locale`.
+///
+/// -> content
+#let lang-genitive(
+  /// -> content
+  author,
+  /// Override the lang -> genitive-function mapping.
+  /// See `genitive.genitives` for more info.
+  mapping: genitive.genitives
+) = context {
+  genitive.genitives.at(text.lang, default: genitive.genitives.en)(author)
 }
 
 #let cite-bare(key, supplement: none, style: auto) = {

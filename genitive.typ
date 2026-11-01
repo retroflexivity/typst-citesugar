@@ -19,7 +19,7 @@
 #let genitives = (
   en: c => {
     show regex(".+"): it => it + "’"
-    show regex("[^s]’"): it => it + "s"
+    show regex(".+[^s]’"): it => it + "s"
     c
   },
   de: average-germanic-genitive,

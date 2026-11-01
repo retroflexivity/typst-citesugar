@@ -11,7 +11,7 @@
   /// See `genitive.genitives` for more info.
   mapping: genitive.genitives
 ) = context {
-  genitive.genitives.at(text.lang, default: genitive.genitives.en)(author)
+  mapping.at(text.lang, default: genitive.genitives.en)(author)
 }
 
 #let cite-bare(key, supplement: none, style: auto) = {

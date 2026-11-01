@@ -19,17 +19,15 @@
   cite(key, supplement: supplement, style: style)
 }
 
-#let cite-author-genitive(key, supplement: none, style: auto) = {
-  lang-genitive(cite(key, form: "author", supplement: supplement))
-}
-
-#let cite-prose-genitive(key, supplement: none, style: auto) = {
+#let cite-genitive(key, supplement: none, style: auto, form: "prose") = {
     show regex("^[^\[\(]+"): it => {
       show regex("([^\s]*\s)*[^\s]+"): lang-genitive
       it
     }
-  cite(key, form: "prose", supplement: supplement)
+  cite(key, form: form, supplement: supplement)
 }
+#let cite-prose-genitive = cite-genitive.with(form: "prose")
+#let cite-author-genitive = cite-genitive.with(form: "author")
 
 #let base-forms = (
     // Davidson (1970)

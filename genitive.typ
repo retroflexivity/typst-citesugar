@@ -14,8 +14,11 @@
 }
 
 /// A dictionary of form `(lang: func)`,
-/// where `func :: content -> content`
-/// creates a genitive form from an author's name.
+/// where `func :: content -> content` takes an author's name
+/// and creates a genitive form from it.
+///
+/// == Examples
+/// `(genitives.en)[Kripke]` -> Kripke's
 #let genitives = (
   en: c => {
     show regex(".+"): it => it + "’"
